@@ -11,6 +11,7 @@ public class PlayerActions : MonoBehaviour
     public int jumpForce;
     bool jump = false;
     float inputX, inputY;
+    bool isGrounded;
 
     // Could be used as reference for the bullets that come out of the shotgun
     // public float bulletSpeed;
@@ -40,11 +41,15 @@ public class PlayerActions : MonoBehaviour
             jump = true;
         }
 
+        isGrounded = Physics.Raycast(transform.position, -Vector3.up, GetComponent<Collider>().bounds.extents.y); // Checks if the the player is grounded
+
+
     }
 
         private void FixedUpdate()
     {
-        rb.velocity = new Vector3(inputX * speed, rb.velocity.y, inputY * speed);
+        
+        Move();
 
         if (jump) // if (jump == true)
         {
@@ -56,8 +61,21 @@ public class PlayerActions : MonoBehaviour
 
     void Jump()
     {
+        if (isGrounded){
         rb.AddForce(0, jumpForce, 0);
+        }
     }
+
+    void Move()
+    {
+        // Bounce();
+        rb.velocity = new Vector3(inputX * speed, rb.velocity.y, inputY * speed);
+    }
+
+    // void Bounce()
+    // {
+        
+    // }
 
   
 }
