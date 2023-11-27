@@ -6,12 +6,14 @@ public class PlayerActions : MonoBehaviour
 {
 
     // Variables
-    Rigidbody rb;
+    private Rigidbody2D rb;
     public float speed;
-    public int jumpForce;
-    bool jump = false;
+    public float jumpForce = 0.0f;
+    public PhysicsMaterial2D bounceMaterial, neutralMaterial;
+    public bool jump = true;
     float inputX, inputY;
-    bool isGrounded;
+    public bool isGrounded;
+    public LayerMask groundMask;
 
     // Could be used as reference for the bullets that come out of the shotgun
     // public float bulletSpeed;
@@ -22,7 +24,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
 
@@ -41,8 +43,15 @@ public class PlayerActions : MonoBehaviour
             jump = true;
         }
 
-        isGrounded = Physics.Raycast(transform.position, -Vector3.up, GetComponent<Collider>().bounds.extents.y); // Checks if the the player is grounded
+        isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, -gameObject.transform.position.y),
+        new Vector2(0.9f, 0.4f), 0f, groundMask); // Checks if the player is grounded
 
+        // if (jumpForce > 0){
+        //         rb.sharedmaterial = rb.bounceMaterial;
+        //     }
+        //     else {
+        //         rb.sharedmaterial = rb.normalMaterial;
+        //     }
 
     }
 
@@ -62,14 +71,14 @@ public class PlayerActions : MonoBehaviour
     void Jump()
     {
         if (isGrounded){
-        rb.AddForce(0, jumpForce, 0);
+        rb.AddForce(new Vector2(0, jumpForce));
         }
     }
 
     void Move()
     {
         // Bounce();
-        rb.velocity = new Vector3(inputX * speed, rb.velocity.y, inputY * speed);
+        rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
     }
 
     // void Bounce()
