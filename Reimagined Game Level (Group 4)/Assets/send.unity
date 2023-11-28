@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 64710562}
   - component: {fileID: 64710561}
   - component: {fileID: 64710560}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 108724859}
   - component: {fileID: 108724858}
   - component: {fileID: 108724857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 167136792}
   - component: {fileID: 167136791}
   - component: {fileID: 167136790}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 231963817}
   - component: {fileID: 231963816}
   - component: {fileID: 231963815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 238963393}
   - component: {fileID: 238963392}
   - component: {fileID: 238963391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,9 +663,9 @@ GameObject:
   m_Component:
   - component: {fileID: 361932593}
   - component: {fileID: 361932592}
-  - component: {fileID: 361932591}
-  - component: {fileID: 361932590}
   - component: {fileID: 361932589}
+  - component: {fileID: 361932595}
+  - component: {fileID: 361932594}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -686,55 +686,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 400
---- !u!65 &361932590
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361932588}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  jumpForce: 100
+  bounceMaterial: {fileID: 0}
+  neutralMaterial: {fileID: 0}
+  groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.16, y: 0.32, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &361932591
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361932588}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+    m_Bits: 64
+  bottom: 0
 --- !u!212 &361932592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -802,6 +760,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &361932594
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361932588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.32}
+    newSize: {x: 0.16, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.32}
+  m_EdgeRadius: 0
+--- !u!50 &361932595
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361932588}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &443135290
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +844,7 @@ GameObject:
   - component: {fileID: 443135293}
   - component: {fileID: 443135292}
   - component: {fileID: 443135291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +950,7 @@ GameObject:
   - component: {fileID: 478022018}
   - component: {fileID: 478022017}
   - component: {fileID: 478022016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1148,7 @@ GameObject:
   - component: {fileID: 568815394}
   - component: {fileID: 568815393}
   - component: {fileID: 568815392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1444,7 @@ GameObject:
   - component: {fileID: 870008517}
   - component: {fileID: 870008516}
   - component: {fileID: 870008515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (Temp) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,6 +1730,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 300
+  bounceMaterial: {fileID: 0}
+  neutralMaterial: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  bottom: 0
 --- !u!65 &1283017928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1911,7 +1947,7 @@ GameObject:
   - component: {fileID: 1413469320}
   - component: {fileID: 1413469319}
   - component: {fileID: 1413469318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2017,7 +2053,7 @@ GameObject:
   - component: {fileID: 1441531167}
   - component: {fileID: 1441531166}
   - component: {fileID: 1441531165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2122,36 +2158,14 @@ GameObject:
   - component: {fileID: 1464553769}
   - component: {fileID: 1464553768}
   - component: {fileID: 1464553767}
-  - component: {fileID: 1464553766}
-  m_Layer: 0
+  - component: {fileID: 1464553770}
+  m_Layer: 6
   m_Name: Test wall (1)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1464553766
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464553765}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1464553767
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2217,6 +2231,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1197483804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1464553770
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464553765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.00000047683716}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1471890931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2394,7 @@ GameObject:
   - component: {fileID: 1575865697}
   - component: {fileID: 1575865696}
   - component: {fileID: 1575865695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2441,7 +2500,7 @@ GameObject:
   - component: {fileID: 1648000158}
   - component: {fileID: 1648000157}
   - component: {fileID: 1648000156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2631,7 +2690,7 @@ GameObject:
   - component: {fileID: 1717085637}
   - component: {fileID: 1717085636}
   - component: {fileID: 1717085635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2902,7 @@ GameObject:
   - component: {fileID: 1862450932}
   - component: {fileID: 1862450931}
   - component: {fileID: 1862450930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2949,7 +3008,7 @@ GameObject:
   - component: {fileID: 1947670920}
   - component: {fileID: 1947670919}
   - component: {fileID: 1947670918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (Temp) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3055,7 +3114,7 @@ GameObject:
   - component: {fileID: 1956255973}
   - component: {fileID: 1956255972}
   - component: {fileID: 1956255971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3161,7 +3220,7 @@ GameObject:
   - component: {fileID: 2010947997}
   - component: {fileID: 2010947996}
   - component: {fileID: 2010947995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3267,7 +3326,7 @@ GameObject:
   - component: {fileID: 2023047269}
   - component: {fileID: 2023047268}
   - component: {fileID: 2023047267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test wall (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3373,7 +3432,7 @@ GameObject:
   - component: {fileID: 2129651242}
   - component: {fileID: 2129651241}
   - component: {fileID: 2129651240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (Temp) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

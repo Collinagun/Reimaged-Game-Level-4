@@ -10,10 +10,11 @@ public class PlayerActions : MonoBehaviour
     public float speed;
     public float jumpForce = 0.0f;
     public PhysicsMaterial2D bounceMaterial, neutralMaterial;
-    public bool jump = true;
+    bool jump = false;
     float inputX, inputY;
-    public bool isGrounded;
+    bool isGrounded;
     public LayerMask groundMask;
+    public bool bottom;
 
     // Could be used as reference for the bullets that come out of the shotgun
     // public float bulletSpeed;
@@ -34,7 +35,13 @@ public class PlayerActions : MonoBehaviour
         
     }
 
-    
+    private void OncollisionStay2D(Collision2D collider){
+        
+        if (collider.gameObject.tag == "floor"){
+            isGrounded = true;
+        }
+        
+    }
     private void Update()
     {
         inputX = Input.GetAxis("Horizontal");
@@ -43,9 +50,11 @@ public class PlayerActions : MonoBehaviour
             jump = true;
         }
 
-        isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, -gameObject.transform.position.y),
-        new Vector2(0.9f, 0.4f), 0f, groundMask); // Checks if the player is grounded
-
+        // isGrounded = Physics2D.Raycast(transform.position, -Vector2.up) && bottom == true; // Checks if the player is grounded
+        if(isGrounded){
+            Debug.Log("Grounded");
+        }
+        
         // if (jumpForce > 0){
         //         rb.sharedmaterial = rb.bounceMaterial;
         //     }
