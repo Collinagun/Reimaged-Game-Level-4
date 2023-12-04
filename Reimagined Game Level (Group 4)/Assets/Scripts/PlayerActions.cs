@@ -9,6 +9,7 @@ public class PlayerActions : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     float dSpeed;
+    public float forwardForce = 5.0f;
     public float jumpForce = 0.0f;
     public PhysicsMaterial2D bounceMaterial, normalMaterial;
     bool jump = false;
@@ -36,7 +37,7 @@ public class PlayerActions : MonoBehaviour
         dSpeed = speed / 3;
     }
 
-    public void OncollisionStay2D(Collision2D col){
+    public void OnCollisionStay2D(Collision2D col){
         
         // if (col.gameObject.tag == "wall"){
         //     reflec = true;
@@ -85,12 +86,6 @@ public class PlayerActions : MonoBehaviour
         new Vector2(0.9f, 0.4f), 0f, groundMask); // Checks if the player is grounded through an invisible collider that can help filter which gameobjects to collide with
         // isGrounded = Physics2D.Raycast(transform.position, -Vector2.up) && bottom == true; // Checks if the player is grounded
         
-        // if (jumpForce > 0){
-        //         rb.sharedmaterial = rb.bounceMaterial;
-        //     }
-        //     else {
-        //         rb.sharedmaterial = rb.normalMaterial;
-        //     }
         // if (isGrounded){
         //     float remainTime = startTime;
         //     StartCoroutine(Writing());
@@ -141,11 +136,21 @@ public class PlayerActions : MonoBehaviour
         
     }
 
-    void Bouncing()
+    public void Knockback(float amount)
     {
-        
-            Debug.Log("Works");
-            rb.velocity = new Vector2(inputX * dSpeed, rb.velocity.y);
+        Rigidbody2D.AddForce(new Vector2(-forwardForce, amount));
+    }
+
+    public void Knockback()
+    {
+        if (Input.GetMouseButtonDown(0))
+    {
+        if(gameObject.GetComponent<Rigidbody>())
+        {
+            print("force add");
+            gameobject.getcomponent<RigidBody>().AddForce (-transform.forward * 10f * Time.deltaTime); 
+        }
+    } 
     }
 
     // void Bounce()
