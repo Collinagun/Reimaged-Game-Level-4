@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - floor
+<<<<<<< Updated upstream
   - wall
+=======
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

@@ -7,9 +7,13 @@ public class PlayerActions : MonoBehaviour
 
     // Variables
     private Rigidbody2D rb;
+<<<<<<< Updated upstream
     public float speed;
     float dSpeed;
     public float forwardForce = 5.0f;
+=======
+    public float speed = 10.0f;
+>>>>>>> Stashed changes
     public float jumpForce = 0.0f;
     public PhysicsMaterial2D bounceMaterial, normalMaterial;
     bool jump = false;
@@ -57,6 +61,7 @@ public class PlayerActions : MonoBehaviour
     }
     private void Update()
     {
+ 
         inputX = Input.GetAxis("Horizontal");
         
         reflect = bounce.canBounce;
@@ -124,7 +129,7 @@ public class PlayerActions : MonoBehaviour
 
     void Jump()
     {
-        if (isGrounded){
+        if (isGrounded == true){
         rb.AddForce(new Vector2(0, jumpForce));
         }
     }
@@ -155,8 +160,15 @@ public class PlayerActions : MonoBehaviour
 
     // void Bounce()
     // {
-        
-    // }
 
-  
+    // }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "floor")
+        {
+            Debug.Log("is grounded");
+            isGrounded = true;
+        }
+    }
+
 }
